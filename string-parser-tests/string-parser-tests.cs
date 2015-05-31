@@ -20,7 +20,9 @@ namespace string_parser_tests
         [TestMethod]
         public void parenthesesCreateALineBreak()
         {
-
+            var parsedString = Parsers.ParseString("(hi hi", LineBreak);
+            string expectedOutput = String.Format(" {0}hi hi", LineBreak);
+            Assert.AreEqual(expectedOutput, parsedString);
         }
     }
 }
