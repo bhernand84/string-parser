@@ -31,6 +31,11 @@ namespace string_parser.Models
                     {
                         openParenthesesCount++;
                     }
+                    if (character == ')')
+                    {
+                        openParenthesesCount--;
+                        continue;
+                    }
                     
                     outputString += " " + lineBreak + AddDashes(openParenthesesCount);
                     

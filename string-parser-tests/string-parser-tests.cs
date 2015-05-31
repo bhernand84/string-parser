@@ -39,5 +39,13 @@ namespace string_parser_tests
             string expectedOutput = String.Format(" {0}hi {0}- hi {0}-- hi", LineBreak);
             Assert.AreEqual(expectedOutput, parsedString);
         }
+
+        [TestMethod]
+        public void closingParenthesesRemovesDashForNestedObjects()
+        {
+            var parsedString = Parsers.ParseString("(hi(hi(hi),hi", LineBreak);
+            string expectedOutput = String.Format(" {0}hi {0}- hi {0}-- hi {0}- hi", LineBreak);
+            Assert.AreEqual(expectedOutput, parsedString);
+        }
     }
 }
