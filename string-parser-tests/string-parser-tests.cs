@@ -12,7 +12,7 @@ namespace string_parser_tests
         [TestMethod]
         public void commasCreateALineBreak()
         {
-            var parsedString = Parsers.ParseString("hi, hi", LineBreak);
+            var parsedString = Parsers.ParseString("hi,hi", LineBreak);
             string expectedOutput = String.Format("hi {0}hi", LineBreak) ;
             Assert.AreEqual( expectedOutput,  parsedString);
         }
@@ -22,6 +22,21 @@ namespace string_parser_tests
         {
             var parsedString = Parsers.ParseString("(hi hi", LineBreak);
             string expectedOutput = String.Format(" {0}hi hi", LineBreak);
+            Assert.AreEqual(expectedOutput, parsedString);
+        }
+
+        [TestMethod]
+        public void nestedOpenParenthesesAddsDashPrefix()
+        {
+            var parsedString = Parsers.ParseString("(hi(hi", LineBreak);
+            string expectedOutput = String.Format(" {0}hi {0}- hi", LineBreak);
+            Assert.AreEqual(expectedOutput, parsedString);
+        }
+        [TestMethod]
+        public void twoNestedOpenParenthesesAddsDashPrefixes()
+        {
+            var parsedString = Parsers.ParseString("(hi(hi(hi", LineBreak);
+            string expectedOutput = String.Format(" {0}hi {0}- hi {0}-- hi", LineBreak);
             Assert.AreEqual(expectedOutput, parsedString);
         }
     }
