@@ -8,17 +8,14 @@ namespace string_parser.Models
 {
     public class Composite :Component
     {
-        public string Name
-        { get; set; }
-
         private List<Component> children = new List<Component>();
 
-        public void Add(Component item)
+        public override void Add(Component item)
         {
             children.Add(item);
         }
 
-        public void Display(int depth)
+        public override void Display(int depth)
         {
             
             if (depth > 2)
@@ -36,10 +33,20 @@ namespace string_parser.Models
             }
         }
 
+        public override void Sort()
+        {
+            children = children.OrderBy(m => m.Name).ToList();
+            foreach (Component component in children)
+            {
+                component.Sort();
+            }
+            
+        }
         public Composite() { }
         public Composite(string name)
         {
             Name = name;
         }
+
     }
 }

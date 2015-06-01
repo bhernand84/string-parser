@@ -16,7 +16,7 @@ namespace string_parser
 
             //Console.WriteLine(Parsers.ParseString(testString, "\n"));
             var returnComposite = Parsers.GetCompositeFromString("(id,created,employee(id,firstname,employeeType(id), lastname),location)");
-
+            returnComposite.Sort();
             returnComposite.Display(0);
             Console.ReadLine();
         }

@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace string_parser.Models
 {
-    public interface Component
+    public abstract class Component
     {
-        void Add(Component item);
-        void Display(int depth);
+        public string Name { get; set; }
+
+        public abstract void Add(Component item);
+        public abstract void Display(int depth);
+        public abstract void Sort();
     }
 }

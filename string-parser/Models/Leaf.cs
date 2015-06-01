@@ -9,14 +9,17 @@ namespace string_parser.Models
     public class Leaf :Component
     {
 
-        public string Name
-        { get; set; }
-        void Component.Add(Component item)
+        public override void Add(Component item)
         {
             throw new InvalidOperationException("Cannot add to leaf node");
         }
 
-        void Component.Display(int depth)
+        public override void Sort()
+        {
+
+        }
+
+        public override void Display(int depth)
         {
 
             if (depth > 2)
