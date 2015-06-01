@@ -8,7 +8,7 @@ namespace string_parser.Models
 {
     public static class Parsers
     {
-        static char[] LineBreakChars = new char[] { ',', '(', ')' };
+        static char[] LineBreakChars = new char[] { '"', ',', '(', ')' };
         
         public static string ParseString(string stringToParse, string lineBreak)
         {
@@ -25,6 +25,7 @@ namespace string_parser.Models
             for (int i = 0; i < stringToParse.Length; i++)
             {
                 char character = stringToParse[i];
+
                 if (LineBreakChars.Contains(character))
                 {
                     if (character == '(')
@@ -36,7 +37,14 @@ namespace string_parser.Models
                         openParenthesesCount--;
                         continue;
                     }
-                    
+                    if (character == '"')
+                    {
+                        continue;
+                    }
+                    if (stringToParse[i + 1] == ' ')
+                    {
+                        i++;
+                    }   
                     outputString += " " + lineBreak + AddDashes(openParenthesesCount);
                     
                 }
