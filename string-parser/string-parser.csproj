@@ -41,6 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Component.cs" />
+    <Compile Include="Models\Composite.cs" />
+    <Compile Include="Models\Leaf.cs" />
     <Compile Include="Models\Parsers.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

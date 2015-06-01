@@ -8,8 +8,7 @@ namespace string_parser.Models
 {
     public interface Component
     {
-        string Name;
-        void Add();
+        void Add(Component item);
         void Display(int depth);
     }
 }

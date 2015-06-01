@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace string_parser.Models
 {
-    class Leaf :Component
+    public class Leaf :Component
     {
 
         public string Name
         { get; set; }
-        void Component.Add()
+        void Component.Add(Component item)
         {
             throw new InvalidOperationException("Cannot add to leaf node");
         }
@@ -19,6 +19,12 @@ namespace string_parser.Models
         void Component.Display(int depth)
         {
             Console.WriteLine(new String('-', depth) + " " + Name);
+        }
+
+        public Leaf() { }
+        public Leaf(string name)
+        {
+            Name = name;
         }
     }
 }

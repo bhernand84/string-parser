@@ -9,7 +9,51 @@ namespace string_parser.Models
     public static class Parsers
     {
         static char[] LineBreakChars = new char[] { '"', ',', '(', ')' };
-        
+
+        public static Component GetCompositeFromString(string stringToParse)
+        {
+            Composite returnObject = new Composite();
+
+            
+            string[] splitString = stringToParse.Split(',');
+
+            return BuildComposite(returnObject, splitString);
+        }
+
+        static int index = 0;
+
+        static Composite BuildComposite(Composite composite, string[] stringsToParse)
+        {
+            while (index < stringsToParse.Length)
+            {
+                string subString = stringsToParse[index];
+
+                if (subString.Contains("(") || subString.Contains(")"))
+                {
+                    if (subString.Contains("("))
+                    {
+                        int indexOfParentheses = subString.IndexOf("(");
+                        var newComposite = new Composite(subString.Substring(0, indexOfParentheses));
+                        stringsToParse[index] = subString.Substring(indexOfParentheses + 1);
+                        composite.Add(BuildComposite(newComposite, stringsToParse));
+                        continue;
+                    }
+                    if (subString.Contains(")"))
+                    {
+                        int indexOfParentheses = subString.IndexOf(")");
+                        composite.Add(new Leaf(subString.Substring(0, indexOfParentheses)));
+                        index++;
+                        return composite;
+                    }
+                }
+                else
+                {
+                    composite.Add(new Leaf(subString));
+                    index++;
+                }
+            }
+            return composite;
+        } 
         public static string ParseString(string stringToParse, string lineBreak)
         {
             stringToParse = AddLineBreaks(stringToParse, lineBreak);

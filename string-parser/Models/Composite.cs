@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace string_parser.Models
 {
-    class Composite :Component
+    public class Composite :Component
     {
         public string Name
         { get; set; }
@@ -25,6 +25,12 @@ namespace string_parser.Models
             {
                 component.Display(depth + 1);
             }
+        }
+
+        public Composite() { }
+        public Composite(string name)
+        {
+            Name = name;
         }
     }
 }
