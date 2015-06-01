@@ -18,7 +18,15 @@ namespace string_parser.Models
 
         void Component.Display(int depth)
         {
-            Console.WriteLine(new String('-', depth) + " " + Name);
+
+            if (depth > 2)
+            {
+                Console.WriteLine(new String('-', (depth - 2)) + " " + Name);
+            }
+            else
+            {
+                Console.WriteLine(Name);
+            }
         }
 
         public Leaf() { }
