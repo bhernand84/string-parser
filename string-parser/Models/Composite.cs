@@ -17,7 +17,6 @@ namespace string_parser.Models
 
         public override void Display(int depth)
         {
-            
             if (depth > 2)
             {
                 Console.WriteLine(new String('-', depth -2) + " " + Name);
@@ -45,7 +44,7 @@ namespace string_parser.Models
         public Composite() { }
         public Composite(string name)
         {
-            Name = name;
+            Name = name.Trim();
         }
 
     }

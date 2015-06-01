@@ -35,7 +35,7 @@ namespace string_parser.Models
         public Leaf() { }
         public Leaf(string name)
         {
-            Name = name;
+            Name = name.Trim() ;
         }
     }
 }

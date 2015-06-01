@@ -11,11 +11,10 @@ namespace string_parser
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Enter test string now:");
-            //string testString = Console.ReadLine();
+            Console.WriteLine("Enter test string now:");
+            string testString = Console.ReadLine();
+            Component returnComposite = Parsers.GetCompositeFromString(testString);
 
-            //Console.WriteLine(Parsers.ParseString(testString, "\n"));
-            var returnComposite = Parsers.GetCompositeFromString("(id,created,employee(id,firstname,employeeType(id), lastname),location)");
             returnComposite.Sort();
             returnComposite.Display(0);
             Console.ReadLine();
